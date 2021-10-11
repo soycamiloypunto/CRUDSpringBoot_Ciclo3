@@ -5,7 +5,10 @@
  */
 package co.cctv.c3r3.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +30,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "reservation")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Reservation implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,15 +43,15 @@ public class Reservation implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "skateId")
-    @JsonIgnoreProperties("reservations")
+    @JsonIgnoreProperties(value="reservations")
     private Skate skate;
     
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties("reservations")
+    @JsonIgnoreProperties(value="reservations")
     private Client client;
     
-    private String score;
+    private String score="None";
     
     public Reservation(){
         
