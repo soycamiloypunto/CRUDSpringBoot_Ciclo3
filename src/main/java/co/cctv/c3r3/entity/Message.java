@@ -31,17 +31,15 @@ public class Message implements Serializable{
     
     //@JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "idSkate")
-    @JsonIgnoreProperties("messages")
-    //@JsonIgnore
+    @JoinColumn(name = "skateId")
+    @JsonIgnoreProperties(value="messages")
     private Skate skate;
     
     //Relacion con client
     //@JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "idClient")
-    //@JsonIgnoreProperties("messages")
-    @JsonIgnoreProperties("messages")
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties(value="messages")
     private Client client;
     
     

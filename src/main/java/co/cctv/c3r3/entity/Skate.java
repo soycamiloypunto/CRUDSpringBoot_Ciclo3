@@ -47,15 +47,15 @@ public class Skate implements Serializable {
     //Relacion con Categoría
     @ManyToOne
     @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("skates")
+    @JsonIgnoreProperties(value="skates")
     private Category category;
     
     @OneToMany(cascade ={CascadeType.PERSIST}, mappedBy = "skate")
-    @JsonIgnoreProperties("skate")
+    @JsonIgnoreProperties(value="skate")
     private List<Message> messages;
     
     @OneToMany(cascade ={CascadeType.PERSIST}, mappedBy = "skate")
-    @JsonIgnoreProperties("skate")
+    @JsonIgnoreProperties(value="skate")
     private List<Reservation> reservations;
     
     //@JsonGetter("messages")

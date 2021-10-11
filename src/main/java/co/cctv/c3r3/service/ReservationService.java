@@ -30,15 +30,15 @@ public class ReservationService {
         return reservationRepository.getReservation(id);
     }
     
-    public Reservation save(Reservation message){
-        if(message.getIdReservation()==null){
-            return reservationRepository.save(message);
+    public Reservation save(Reservation reservation){
+        if(reservation.getIdReservation()==null){
+            return reservationRepository.save(reservation);
         }else{
-            Optional<Reservation> e=reservationRepository.getReservation(message.getIdReservation());
+            Optional<Reservation> e=reservationRepository.getReservation(reservation.getIdReservation());
             if(e.isEmpty()){
-                return reservationRepository.save(message);
+                return reservationRepository.save(reservation);
             }else{
-                return message;
+                return reservation;
             }
         }
     }

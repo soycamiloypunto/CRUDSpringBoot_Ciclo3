@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +19,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -29,7 +31,9 @@ public class Reservation implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date startDate;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date devolutionDate;
     private String status="created";
     
@@ -43,21 +47,19 @@ public class Reservation implements Serializable{
     @JsonIgnoreProperties("reservations")
     private Client client;
     
-    @OneToMany(cascade ={CascadeType.PERSIST}, mappedBy = "reservation")
-    @JsonIgnoreProperties("reservation")
-    private List<Score> scores;
+    private String score;
     
     public Reservation(){
         
     }
 
-    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, Skate skate, Client client, List<Score> scores) {
+    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, Skate skate, Client client, String score) {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
         this.skate = skate;
         this.client = client;
-        this.scores = scores;
+        this.score = score;
     }
 
     public Integer getIdReservation() {
@@ -108,12 +110,12 @@ public class Reservation implements Serializable{
         this.client = client;
     }
 
-    public List<Score> getScores() {
-        return scores;
+    public String getScore() {
+        return score;
     }
 
-    public void setScores(List<Score> scores) {
-        this.scores = scores;
+    public void setScore(String score) {
+        this.score = score;
     }
 
     

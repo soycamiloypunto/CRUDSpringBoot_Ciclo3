@@ -28,23 +28,22 @@ public class Score implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idScore;
-    private Integer score;    
+    private Integer scoreq;    
     private String messageScore;
     
-    @ManyToOne
-    @JoinColumn(name = "reservarionId")
-    @JsonIgnoreProperties("scores")
-    private Reservation reservation;
+//    @ManyToOne
+//    @JoinColumn(name = "reservationId")
+//    @JsonIgnoreProperties(value="scores")
+//    private Reservation reservation;
     
     public Score(){
         
     }
 
-    public Score(Integer idScore, Integer score, String messageScore, Reservation reservation) {
+    public Score(Integer idScore, Integer scoreq, String messageScore) {
         this.idScore = idScore;
-        this.score = score;
+        this.scoreq = scoreq;
         this.messageScore = messageScore;
-        this.reservation = reservation;
     }
 
     public Integer getIdScore() {
@@ -55,12 +54,12 @@ public class Score implements Serializable {
         this.idScore = idScore;
     }
 
-    public Integer getScore() {
-        return score;
+    public Integer getScoreq() {
+        return scoreq;
     }
 
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setScoreq(Integer scoreq) {
+        this.scoreq = scoreq;
     }
 
     public String getMessageScore() {
@@ -71,14 +70,11 @@ public class Score implements Serializable {
         this.messageScore = messageScore;
     }
 
-    public Reservation getReservation() {
-        return reservation;
-    }
-
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
-
+    
+    
+    
+    
+    
     
     
     
