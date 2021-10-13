@@ -31,12 +31,12 @@ import javax.persistence.Table;
  *
  * @author cktv
  */
-@Entity
-@Table (name = "skate")
-public class Skate implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+@Entity//Etiqueta Entidad
+@Table (name = "skate")//Nombre de la tabla
+public class Skate implements Serializable {//Serializable por JSON
+    @Id//identificador unico
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//Valor incremental
+    private Integer id;//Identificador unico
     @Column(length = 45)
     private String name;
     @Column(length = 45)
@@ -51,22 +51,22 @@ public class Skate implements Serializable {
     @JoinColumn(name = "categoryId")
     @JsonIgnoreProperties(value="skates")
     private Category category;
-    
+    //Relacion con Message
     @OneToMany(cascade ={CascadeType.PERSIST}, mappedBy = "skate")
     @JsonIgnoreProperties(value={"skate","client"})
     private List<Message> messages;
-    
+    //Relacion con Reservation
     @OneToMany(cascade ={CascadeType.PERSIST}, mappedBy = "skate")
     @JsonIgnoreProperties(value="skate")
     private List<Reservation> reservations;
     
     //@JsonGetter("messages")
     //@JsonGetter("reservations")
-    
+    //Constructor vacío
     public Skate(){
         
     }
-
+    //Constructor inicial atributos
     public Skate(Integer id, String name, String brand, Integer year, String description, Category category, List<Message> messages, List<Reservation> reservations) {
         this.id = id;
         this.name = name;
@@ -77,7 +77,7 @@ public class Skate implements Serializable {
         this.messages = messages;
         this.reservations = reservations;
     }
-
+    //Getters y setters
     public Integer getId() {
         return id;
     }
