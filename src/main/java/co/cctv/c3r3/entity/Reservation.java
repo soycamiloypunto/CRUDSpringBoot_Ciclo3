@@ -30,7 +30,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "reservation")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+//@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Reservation implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,12 +43,12 @@ public class Reservation implements Serializable{
     
     @ManyToOne
     @JoinColumn(name = "skateId")
-    @JsonIgnoreProperties(value="reservations")
+    @JsonIgnoreProperties(value={"reservations"})
     private Skate skate;
     
     @ManyToOne
     @JoinColumn(name = "clientId")
-    @JsonIgnoreProperties(value="reservations")
+    @JsonIgnoreProperties(value={"reservations", "messages" })
     private Client client;
     
     private String score="None";
