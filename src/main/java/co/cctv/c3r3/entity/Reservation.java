@@ -22,6 +22,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,19 +52,22 @@ public class Reservation implements Serializable{
     @JsonIgnoreProperties(value={"reservations", "messages" })
     private Client client;
     
-    private String score="None";
+    @OneToOne(cascade = {CascadeType.REMOVE},mappedBy="reservation")
+    @JsonIgnoreProperties("reservation")
+    private Score score;
+
     
     public Reservation(){
         
     }
 
-    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, Skate skate, Client client) {
+    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, Skate skate, Client client, Score score) {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
         this.skate = skate;
         this.client = client;
-        
+        this.score = score;
     }
 
     public Integer getIdReservation() {
@@ -114,11 +118,11 @@ public class Reservation implements Serializable{
         this.client = client;
     }
 
-    public String getScore() {
+    public Score getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Score score) {
         this.score = score;
     }
 
