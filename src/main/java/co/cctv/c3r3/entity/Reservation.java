@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -23,6 +24,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -35,9 +37,7 @@ public class Reservation implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idReservation;
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date startDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
     private Date devolutionDate;
     private String status="created";
     
@@ -57,13 +57,13 @@ public class Reservation implements Serializable{
         
     }
 
-    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, Skate skate, Client client, String score) {
+    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, Skate skate, Client client) {
         this.idReservation = idReservation;
         this.startDate = startDate;
         this.devolutionDate = devolutionDate;
         this.skate = skate;
         this.client = client;
-        this.score = score;
+        
     }
 
     public Integer getIdReservation() {
@@ -122,6 +122,7 @@ public class Reservation implements Serializable{
         this.score = score;
     }
 
+    
     
     
 }
