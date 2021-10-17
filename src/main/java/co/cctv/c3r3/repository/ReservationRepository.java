@@ -6,6 +6,7 @@
 package co.cctv.c3r3.repository;
 
 import co.cctv.c3r3.entity.Reservation;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,10 @@ public class ReservationRepository {
     //DELETE
     public void delete(Reservation reservation){
         reservationCrudRepository.delete(reservation);
+    }
+    
+    public List<Reservation> getReservationPeriod(Date a, Date b){
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
     }
     
 }

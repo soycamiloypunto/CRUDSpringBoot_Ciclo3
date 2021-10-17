@@ -59,4 +59,10 @@ public class RervationController {
     public boolean delete(@PathVariable("id") int Id){
         return reservationService.deleteReservation(Id);
     }
+    
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(
+    @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReservationsPeriod(dateOne,dateTwo);
+    }
 }

@@ -7,10 +7,16 @@ package co.cctv.c3r3.service;
 
 import co.cctv.c3r3.entity.Reservation;
 import co.cctv.c3r3.repository.ReservationRepository;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  *
@@ -74,6 +80,24 @@ public class ReservationService {
         }).orElse(aBoolean=false);
         
         return aBoolean;
+    }
+    
+    public List<Reservation> getReservationsPeriod(String dateA, String dateB){
+        SimpleDateFormat parser=new SimpleDateFormat ("yyyy-MM-dd");
+        Date a=new Date();
+        Date b=new Date();
+        try{
+            a=parser.parse(dateA);
+            b=parser.parse(dateB);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        
+        if(a.before(b)){
+            return reservationRepository.getReservationPeriod(a,b);
+        }else{
+            return new ArrayList<>();
+        }
     }
     
 }
