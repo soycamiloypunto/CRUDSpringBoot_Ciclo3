@@ -50,6 +50,7 @@ public class SkateController {
     }
     
     @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
     public Skate update(@RequestBody Skate skateboard){
         return skateboardService.update(skateboard);
     }

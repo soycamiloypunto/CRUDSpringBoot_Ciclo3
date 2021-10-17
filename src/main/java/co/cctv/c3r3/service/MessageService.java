@@ -66,7 +66,7 @@ public class MessageService {
         }
     }
     
-    public boolean deleteCategory(int id){
+    public boolean deleteMessage(int id){
         
         
         Boolean aBoolean=getMessage(id).map(message -> {
