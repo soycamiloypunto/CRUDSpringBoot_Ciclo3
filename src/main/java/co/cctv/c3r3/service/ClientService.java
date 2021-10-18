@@ -27,14 +27,14 @@ public class ClientService {
     }
     
     public Optional<Client> getClient(int id){
-        return clientRepository.getMessage(id);
+        return clientRepository.getClient(id);
     }
     
     public Client save(Client client){
         if(client.getIdClient()==null){
             return clientRepository.save(client);
         }else{
-            Optional<Client> e=clientRepository.getMessage(client.getIdClient());
+            Optional<Client> e=clientRepository.getClient(client.getIdClient());
             if(e.isEmpty()){
                 return clientRepository.save(client);
             }else{
@@ -47,7 +47,7 @@ public class ClientService {
         if(client.getIdClient()==null){
             return clientRepository.save(client);
         }else{
-            Optional<Client> e=clientRepository.getMessage(client.getIdClient());
+            Optional<Client> e=clientRepository.getClient(client.getIdClient());
             if(!e.isEmpty()){
                 if(client.getIdClient()!=null){
                     e.get().setIdClient(client.getIdClient());

@@ -26,7 +26,7 @@ public class ClientRepository {
     }
     
     //Get por Id
-    public Optional <Client> getMessage(int id){
+    public Optional <Client> getClient(int id){
         return clientCrudRepository.findById(id);
     }
     
