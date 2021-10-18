@@ -22,23 +22,23 @@ import org.springframework.web.bind.annotation.PathVariable;
  *
  * @author cktv
  */
-@Service
+@Service//Etiqueta de Servicio
 public class ReservationService {
     
-    @Autowired
-    private ReservationRepository reservationRepository;
+    @Autowired //Etiqueta
+    private ReservationRepository reservationRepository; 
     
-    public List<Reservation> getAll(){
+    public List<Reservation> getAll(){ //Lista de Reservaciones
         return reservationRepository.getAll();
     }
     
-    public Optional<Reservation> getReservation(int id){
+    public Optional<Reservation> getReservation(int id){ //Método para obtener 1 reservación especifica
         return reservationRepository.getReservation(id);
     }
     
-    public Reservation save(Reservation reservation){
-        if(reservation.getIdReservation()==null){
-            return reservationRepository.save(reservation);
+    public Reservation save(Reservation reservation){ //Método para guardar la reservación nueva
+        if(reservation.getIdReservation()==null){ //Valido si el id existe.
+            return reservationRepository.save(reservation); 
         }else{
             Optional<Reservation> e=reservationRepository.getReservation(reservation.getIdReservation());
             if(e.isEmpty()){
@@ -49,8 +49,8 @@ public class ReservationService {
         }
     }
     
-    public Reservation update(Reservation reservation){
-        if(reservation.getIdReservation()==null){
+    public Reservation update(Reservation reservation){ //Metodo para actualizar una reservaciṕn.
+        if(reservation.getIdReservation()==null){ //Valido si existe.
             return reservationRepository.save(reservation);
         }else{
             Optional<Reservation> e=reservationRepository.getReservation(reservation.getIdReservation());
@@ -72,7 +72,7 @@ public class ReservationService {
         }
     }
     
-    public boolean deleteReservation(int id){
+    public boolean deleteReservation(int id){ //Método para borrar una reservación. 
         
         Boolean aBoolean=getReservation(id).map(reservation -> {
             reservationRepository.delete(reservation);
