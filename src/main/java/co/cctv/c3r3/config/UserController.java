@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author camilo
  */
 @RestController
-public class UserController extends WebSecurityConfigurerAdapter {
+public class UserController /*extends WebSecurityConfigurerAdapter */{
 
     @GetMapping("/user")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
@@ -28,22 +28,24 @@ public class UserController extends WebSecurityConfigurerAdapter {
     }
 
     
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-    	// @formatter:off
-        http.authorizeRequests(a -> a
-                .antMatchers("/", "/error", "/webjars/**", "/Reservation/**", "/Client/**"
-                , "/Category/**", "/Message/**", "/Score/**", "/Admin/**").permitAll()
-                .anyRequest().authenticated()
-            )
-            .exceptionHandling(e -> e
-                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
-            )
-            .oauth2Login();
-        
-        http.cors().and().csrf().disable();
-        // @formatter:on
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//    	// @formatter:off
+//        http.authorizeRequests(a -> a
+//                .antMatchers("/", "/error", "/webjars/**", "/Skate", "/Reservation/**", "/Client/**"
+//                , "/Category/**", "/Message/**", "/Score/**", "/Admin/**").permitAll()
+//                .anyRequest().authenticated()
+//            )
+//            .exceptionHandling(e -> e
+//                .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+//            )
+//            .oauth2Login();
+//        
+//        http.cors().and().csrf().disable();
+//        // @formatter:on
+//    }
+    
+    
 }
 
 
