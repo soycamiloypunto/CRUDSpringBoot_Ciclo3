@@ -64,6 +64,12 @@ public class SkateService {
                 if(skateboard.getCategory()!=null){
                     e.get().setCategory(skateboard.getCategory());
                 }
+                if(skateboard.getMessages()!=null){
+                    e.get().setMessages(skateboard.getMessages());
+                }
+                if(skateboard.getReservations()!=null){
+                    e.get().setReservations(skateboard.getReservations());
+                }
                 skateboardRepository.save(e.get());
                 return e.get();
             }else{
