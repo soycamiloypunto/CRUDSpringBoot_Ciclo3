@@ -16,5 +16,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author cktv
  */
 public interface ReservationCrudRepository extends CrudRepository<Reservation, Integer>{
-    public List<Reservation> findAllByStartDateAfterAndStartDateBefore(Date dateOne,Date dateTwo );
+    //public List<Reservation> findAllByStartDateAfterAndStartDateBefore(Date dateOne,Date dateTwo );
 }

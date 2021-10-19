@@ -41,8 +41,8 @@ public class ReservationRepository {
         reservationCrudRepository.delete(reservation);
     }
     
-    public List<Reservation> getReservationPeriod(Date a, Date b){
-        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
-    }
+//    public List<Reservation> getReservationPeriod(Date a, Date b){
+//        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
+//    }
     
 }

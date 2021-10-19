@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package co.cctv.c3r3.config;
+package co.cctv.c3r3.controller;
 
 import java.util.Collections;
 import java.util.Map;
