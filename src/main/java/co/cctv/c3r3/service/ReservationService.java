@@ -50,7 +50,7 @@ public class ReservationService {
     }
     
     public Reservation update(Reservation reservation){ //Metodo para actualizar una reservaciṕn.
-        if(reservation.getIdReservation()==null){ //Valido si existe.
+        if(reservation.getIdReservation()!=null){ //Valido si existe.
             return reservationRepository.save(reservation);
         }else{
             Optional<Reservation> e=reservationRepository.getReservation(reservation.getIdReservation());

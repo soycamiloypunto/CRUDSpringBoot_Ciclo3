@@ -20,8 +20,8 @@ public class SecurityAdapter extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
     	// @formatter:off
         http.authorizeRequests(a -> a
-                .antMatchers("/", "/error", "/webjars/**", "/Skate", "/Reservation/**", "/Client/**"
-                , "/Category/**", "/Message/**", "/Score/**", "/Admin/**").permitAll()
+                .antMatchers("/", "/error", "/webjars/**", "/api/Skate/**", "/api/Reservation/**", "/api/Client/**"
+                , "/api/Category/**", "/api//Message/**", "/api/Score/**").permitAll()
                 .anyRequest().authenticated()
             )
             .exceptionHandling(e -> e

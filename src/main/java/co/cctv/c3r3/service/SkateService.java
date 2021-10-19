@@ -44,7 +44,7 @@ public class SkateService {
     }
     
     public Skate update(Skate skateboard){
-        if(skateboard.getId()==null){
+        if(skateboard.getId()!=null){
             return skateboardRepository.save(skateboard);
         }else{
             Optional<Skate> e=skateboardRepository.getSkateboard(skateboard.getId());
