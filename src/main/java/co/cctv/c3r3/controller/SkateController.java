@@ -48,7 +48,7 @@ public class SkateController {
     }
     
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.OK)
     public Skate update(@RequestBody Skate skateboard){
         return skateboardService.update(skateboard);
     }

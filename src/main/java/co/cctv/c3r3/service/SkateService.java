@@ -5,6 +5,7 @@
  */
 package co.cctv.c3r3.service;
 
+import co.cctv.c3r3.entity.Category;
 import co.cctv.c3r3.entity.Skate;
 import co.cctv.c3r3.repository.SkateRepository;
 import java.util.List;
