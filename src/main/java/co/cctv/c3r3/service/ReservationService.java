@@ -5,8 +5,16 @@
  */
 package co.cctv.c3r3.service;
 
+import co.cctv.c3r3.entity.Client;
 import co.cctv.c3r3.entity.Reservation;
+import co.cctv.c3r3.entity.custom.StatusCount;
+import co.cctv.c3r3.entity.custom.CountClient;
 import co.cctv.c3r3.repository.ReservationRepository;
+import java.math.BigInteger;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,22 +84,47 @@ public class ReservationService {
         return aBoolean;
     }
     
-//    public List<Reservation> getReservationsPeriod(String dateA, String dateB){
-//        SimpleDateFormat parser=new SimpleDateFormat ("yyyy-MM-dd");
-//        Date a=new Date();
-//        Date b=new Date();
-//        try{
-//            a=parser.parse(dateA);
-//            b=parser.parse(dateB);
-//        }catch (ParseException e){
-//            e.printStackTrace();
-//        }
-//        
-//        if(a.before(b)){
-//            return reservationRepository.getReservationPeriod(a,b);
-//        }else{
-//            return new ArrayList<>();
-//        }
-//    }
+    public List<Reservation> getReservationsPeriod(String dateA, String dateB){
+        SimpleDateFormat parser=new SimpleDateFormat ("yyyy-MM-dd");
+        Date a=new Date();
+        Date b=new Date();
+        try{
+            a=parser.parse(dateA);
+            b=parser.parse(dateB);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        
+        if(a.before(b)){
+            return reservationRepository.getReservationPeriod(a,b);
+        }else{
+            return new ArrayList<>();
+        }
+    }
+    
+    public List<StatusCount> getStatusForStatus(){
+        int report=reservationRepository.getStatusForStatusCompleted();
+        List<StatusCount> res=new ArrayList<>();
+        for (int i = 0; i < 1; i++) {
+            int value1=reservationRepository.getStatusForStatusCompleted();
+            int value2=reservationRepository.getStatusForStatusCancelled();
+            res.add(new StatusCount(value1,value2));
+            
+        }
+        return res;
+    }
+    
+    public List<CountClient> getReservationByClient(){
+        List<CountClient> resultado=new ArrayList<>(); //Lista 
+        List<Object[]> report=reservationRepository.getReservationByClient(); //Objeto a recorrer
+        for (int i = 0; i < report.size(); i++) {
+            long val1=(long) report.get(i)[1];
+            int value1=(int) val1;
+            Client value2=(Client) report.get(i)[0];
+            resultado.add(new CountClient(value1,value2));
+            
+        }
+        return resultado;
+    }
     
 }

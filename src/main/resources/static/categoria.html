@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Spring-Boot Front</title>
+    
+    <!-- Compiled and minified CSS -->
+     <!-- CSS  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link  rel="icon"   href="https://cdn-icons-png.flaticon.com/512/194/194931.png" type="image/png" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/estilos.css">
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Ciclo 3 - G22 - CCTV</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="patineta.html">Patinetas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="categoria.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cliente.html">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mensaje.html">Mensajes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reserva.html">Reservas</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="calificaciones.html">Calificaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html">Usuarios del Sistema</a>
+            </li>
+          </ul>
+          
+        </div>
+    </nav>
+    
+         
+</head>
+
+<body onload="cargarTablaCategoria()">
+    <!--Contenedor Clientes-->
+    <div class="container">
+        <div class="section">
+
+            <!--Form Cliente-->
+            <h4 class="text-center">Categorías</h2>
+                <div class="text-center">
+                        <input class="form-control m-3" type="number" id="id_ca"  placeholder="Id" >
+                        <input class="form-control m-3" type="text" id="name_ca" placeholder="Categoría ">
+                        <input class="form-control m-3" type="text" id="description_ca" placeholder="Descripción ">
+                        <button class="btn-primary btn" onclick="guardarInformacion_Categoria()" class="btn btn-primary" >Agregar</button>
+                        <button class="btn-primary btn"  onclick="editarCategoria()" class="btn btn-primary">Actualizar</button>
+                        <button class="btn-primary btn"  onclick="cargarTablaCategoria()" class="btn btn-primary" >Mostrar Todos</button>
+                        <br><br>
+                </div>
+    
+                <!--Botones-->
+                
+            
+        </div>
+        
+        
+        <table style="white-space:nowrap;width:100%;">
+            <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Categoría</th>
+                  <th>Descripción</th>
+                  <th>Opciones</th>
+              </tr>
+            </thead>
+    
+            <tbody id="tabla_categorias">
+              
+            </tbody>
+          </table>
+
+    </div>
+</body>
+
+    <!--  Scripts-->
+    <script src="assets/js/ajax2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</html>

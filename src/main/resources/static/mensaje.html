@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Spring-Boot Front</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/estilos.css">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Ciclo 3 - G22 - CCTV</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="patineta.html">Patinetas</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categoria.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cliente.html">Clientes</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link active" href="mensaje.html">Mensajes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reserva.html">Reservas</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="calificaciones.html">Calificaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html">Usuarios del Sistema</a>
+            </li>
+          </ul>
+          
+        </div>
+    </nav>
+    
+</head>
+
+<body onload="cargar_desplegable_cliente(); cargar_desplegable_patineta(); cargarTablaMensaje();">
+      <!--Contenedor Mensajes-->
+    <div  class="container form-group text-center">
+        <div class="section">
+
+            <h4> Mensajes</h2>
+                <div>
+                        <input class="form-control m-3"  type="number" id="message_id_m"  placeholder="Id">
+                        <input class="form-control m-3"  type="text" id="messagetext_m" placeholder="Texto Mensaje">
+                        <select class="form-control m-3" id="patinetaBox" name="patinetaBox">
+                            <option>Seleccione una Patineta...</option>
+                        </select>
+                        <select class="form-control m-3" id="clienteBox" name="clienteBox">
+                            <option>Seleccione un Cliente...</option>
+                        </select>
+                        
+                        <button onclick="guardarInformacion_Mensaje()" class="btn btn-primary">Agregar</button>
+                        <button onclick="editarMensaje()" class="btn btn-primary">Actualizar</button>
+                        <button onclick="cargarTablaMensaje()" class="btn btn-primary" >Mostrar Todos</button>
+                        <br><br>
+                </div>
+            
+            
+        </div>
+        
+        <table style="white-space:nowrap;width:100%;">
+            <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Mensaje</th>
+                  <th>Skate</th>
+                  <th>Client</th>
+                  <th>Opciones</th>
+              </tr>
+            </thead>
+    
+            <tbody id="tabla_mensajes">
+              
+            </tbody>
+          </table>
+
+    </div>
+</body>
+
+    <script src="/assets/js/ajax2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

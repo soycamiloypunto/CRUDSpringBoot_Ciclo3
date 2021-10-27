@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Spring-Boot Front</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <!--CSS Personalizado-->
+    <link rel="stylesheet" href="/assets/css/estilos.css">
+    
+    
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Ciclo 3 - G22 - CCTV</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="patineta.html">Patinetas</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categoria.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cliente.html">Clientes</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="mensaje.html">Mensajes</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="reserva.html">Reservas</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link active" href="calificaciones.html">Calificaciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin.html">Usuarios del Sistema</a>
+            </li>
+          </ul>
+          
+        </div>
+    </nav>
+    
+</head>
+
+<body onload="cargarTablaReserva_Calificaciones();">
+      <!--Contenedor Reservas-->
+    <div  class="container form-group ">
+        <div class="section">
+
+            <h4 class="text-center">Calificación de Reservas</h2>
+                <div>
+                    
+                        <input class="form-control m-3" type="number" id="id_reserva_c"  placeholder="Id de Reserva"  disabled>
+                        <input class="form-control m-3" type="text" id="skate_ca"  placeholder="Patineta"  disabled>
+                        <input class="form-control m-3" type="text" id="cliente_ca"  placeholder="Cliente"  disabled>
+                        
+                        <input  type="hidden" class="form-control m-3"  type="number" id="id_calificacion_c"  placeholder="Id de Calificación">
+                        <div class="display-label">Mensaje</div>
+                        <input class="form-control m-3"  type="text"  id="messagetext_c"  placeholder="Mensaje">
+                        <div class="display-label">Score</div>
+                        <div class="rate">
+                            <input type="radio" id="star5" name="rate" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rate" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rate" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rate" value="1" />
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                        
+                        <br>
+                        <br>
+                        
+                        
+                        
+                        <button onclick="guardarInformacion_Calificacion()" class="btn btn-primary form-control m-3">Guardar</button>
+                        <br><br>
+                </div>
+            
+            
+        </div>
+        
+        <table style="white-space:nowrap;width:100%;">
+            <thead>
+              <tr>
+                  <th>Id de Reserva</th>
+                  <th>Fecha Inicio</th>
+                  <th>Fecha Fin </th>
+                  <th>Skate</th>
+                  <th>Client</th>
+                  <th>Calificaciones</th>
+              </tr>
+            </thead>
+    
+            <tbody id="tabla_reserva_calificaciones">
+              
+            </tbody>
+          </table>
+
+        
+        
+        
+    </div>
+</body>
+
+    <script src="/assets/js/ajax2.js"></script>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

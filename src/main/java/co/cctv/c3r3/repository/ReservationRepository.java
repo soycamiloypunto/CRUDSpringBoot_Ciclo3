@@ -40,9 +40,20 @@ public class ReservationRepository {
     public void delete(Reservation reservation){
         reservationCrudRepository.delete(reservation);
     }
+    //Lista de revervaciones por intervalo de fechas
+    public List<Reservation> getReservationPeriod(Date a, Date b){
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
+    }
     
-//    public List<Reservation> getReservationPeriod(Date a, Date b){
-//        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
-//    }
+    public int getStatusForStatusCompleted(){
+         return reservationCrudRepository.countTotalStatusForCompleted();
+    }
     
+    public int getStatusForStatusCancelled(){
+         return reservationCrudRepository.countTotalStatusForCancelled();
+    }
+    
+    public List<Object[]> getReservationByClient(){
+         return reservationCrudRepository.countTotalReservationByClient();
+    }
 }

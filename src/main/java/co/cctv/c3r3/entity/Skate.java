@@ -40,7 +40,7 @@ public class Skate implements Serializable {//Serializable por JSON
     
     //Relacion con Categoría
     @ManyToOne
-    @JoinColumn(name = "categoryId", updatable = false)
+    @JoinColumn(name = "categoryId"/* , updatable = false */)
     @JsonIgnoreProperties(value="skates")
     private Category category;
     //Relacion con Message

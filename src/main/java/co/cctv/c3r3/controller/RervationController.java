@@ -6,6 +6,8 @@
 package co.cctv.c3r3.controller;
 
 import co.cctv.c3r3.entity.Reservation;
+import co.cctv.c3r3.entity.custom.StatusCount;
+import co.cctv.c3r3.entity.custom.CountClient;
 import co.cctv.c3r3.service.ReservationService;
 import java.util.List;
 import java.util.Optional;
@@ -39,8 +41,8 @@ public class RervationController {
     }
     
     @GetMapping("/{id}")
-    public Optional<Reservation> getReservation(@PathVariable("idReservation") int Id){
-        return reservationService.getReservation(Id);
+    public Optional<Reservation> getReservation(@PathVariable("id") int reservationId){
+        return reservationService.getReservation(reservationId);
     }
     
     @PostMapping("/save")
@@ -61,9 +63,19 @@ public class RervationController {
         return reservationService.deleteReservation(Id);
     }
     
-//    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
-//    public List<Reservation> getReservationsReportDates(
-//    @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
-//        return reservationService.getReservationsPeriod(dateOne,dateTwo);
-//    }
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationsReportDates(
+    @PathVariable("dateOne") String dateOne,@PathVariable("dateTwo") String dateTwo){
+        return reservationService.getReservationsPeriod(dateOne,dateTwo);
+    }
+    
+    @GetMapping("/report-status")
+    public List<StatusCount> getReport(){
+        return reservationService.getStatusForStatus();
+    }
+    
+    @GetMapping("/report-clients")
+    public List<CountClient> getClientsByReservation(){
+        return reservationService.getReservationByClient();
+    }
 }
