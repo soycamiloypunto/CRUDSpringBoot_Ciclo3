@@ -45,12 +45,8 @@ public class ReservationRepository {
         return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(a,b);
     }
     
-    public int getStatusForStatusCompleted(){
-         return reservationCrudRepository.countTotalStatusForCompleted();
-    }
-    
-    public int getStatusForStatusCancelled(){
-         return reservationCrudRepository.countTotalStatusForCancelled();
+    public List<Reservation> getReservationByStatus(String status){
+        return reservationCrudRepository.findAllByStatus(status);
     }
     
     public List<Object[]> getReservationByClient(){

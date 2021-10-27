@@ -70,8 +70,8 @@ public class RervationController {
     }
     
     @GetMapping("/report-status")
-    public List<StatusCount> getReport(){
-        return reservationService.getStatusForStatus();
+    public StatusCount getStatusCount(){
+        return reservationService.getStatusReport();
     }
     
     @GetMapping("/report-clients")

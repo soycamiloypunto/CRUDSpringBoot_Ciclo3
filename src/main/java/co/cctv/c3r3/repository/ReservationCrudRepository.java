@@ -22,17 +22,10 @@ public interface ReservationCrudRepository extends CrudRepository<Reservation, I
     
     public List<Reservation> findAllByStartDateAfterAndStartDateBefore(Date dateOne,Date dateTwo );
     
-    //public List<Reservation> findAllByStatus(String status);//
-    
-    @Query(value="SELECT count(*) from reservation WHERE status='completed'", nativeQuery = true)
-    public int countTotalStatusForCompleted();
-    
-    @Query(value="SELECT count(*) from reservation WHERE status='cancelled'", nativeQuery = true)
-    public int countTotalStatusForCancelled();
-    
     @Query("select c.client, COUNT(c.client) from Reservation AS c group by c.client order by COUNT(c.client) desc")
     public List<Object[]> countTotalReservationByClient();
     
+    public List<Reservation> findAllByStatus(String status); 
     
     
 }

@@ -102,16 +102,12 @@ public class ReservationService {
         }
     }
     
-    public List<StatusCount> getStatusForStatus(){
-        int report=reservationRepository.getStatusForStatusCompleted();
-        List<StatusCount> res=new ArrayList<>();
-        for (int i = 0; i < 1; i++) {
-            int value1=reservationRepository.getStatusForStatusCompleted();
-            int value2=reservationRepository.getStatusForStatusCancelled();
-            res.add(new StatusCount(value1,value2));
-            
-        }
-        return res;
+    public StatusCount getStatusReport(){
+        List<Reservation> completed=reservationRepository.getReservationByStatus("completed");
+        List<Reservation> cancelled=reservationRepository.getReservationByStatus("cancelled");
+
+        StatusCount descAmt=new StatusCount(completed.size(),cancelled.size());
+        return descAmt;
     }
     
     public List<CountClient> getReservationByClient(){
