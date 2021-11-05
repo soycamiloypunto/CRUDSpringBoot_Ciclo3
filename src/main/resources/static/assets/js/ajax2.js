@@ -311,9 +311,9 @@ function edicionCategoria(idelemento){
         success:function(respuesta){
             console.log(respuesta);
             console.log("encontré la categoría");
-            $("#id_ca").val(respuesta.idClient);
-            $("#name_ca").val(respuesta.email);
-            $("#description_ca").val(respuesta.password);
+            $("#id_ca").val(respuesta.id);
+            $("#name_ca").val(respuesta.name);
+            $("#description_ca").val(respuesta.description);
                 
         }
 
